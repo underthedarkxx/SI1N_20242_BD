@@ -1,6 +1,5 @@
-CREATE SCHEMA REDE SOCIAL 
-
-use REDE SOCIAL;
+#CREATE SCHEMA Exe_fix;
+use Exe_fix;
 
 CREATE TABLE IF NOT EXISTS Usuarios(
     ID_Usuario INT PRIMARY KEY,
@@ -22,7 +21,7 @@ CREATE TABLE IF NOT EXISTS Postagens(
 CREATE TABLE IF NOT EXISTS Comentarios(
     ID_Comentario INT PRIMARY KEY,
     Texto TEXT,
-    data_Hora DATETIME,
+    data_Hora DATE TIME,
     CE_Usuarios INT,
     CE_Posts INT,
     CONSTRAINT FK_Usuario FOREIGN KEY (CE_Usuarios)
