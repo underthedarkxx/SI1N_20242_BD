@@ -1,6 +1,3 @@
--- Active: 1728688414725@@127.0.0.1@3306@exe_fix_iii
-#CREATE SCHEMA Exe_fix_III;
-
 USE Exe_fix;
 
 CREATE TABLE IF NOT EXISTS Sessoes(
