@@ -1,4 +1,4 @@
--- Active: 1728688414725@@127.0.0.1@3306@exe_fix
+PRIMA-- Active: 1728688414725@@127.0.0.1@3306@exe_fix
 #CREATE SCHEMA Exe_fix
 
 use Exe_fix;
@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS Eventos(
     local_Evento INT,
     CONSTRAINT FK_LCL_EVT FOREIGN KEY (local_Evento)
     REFERENCES Locais(id_Local)
+    
 );
 
 CREATE TABLE IF NOT Exists Locais(
