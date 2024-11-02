@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS Pagamentos(
 
 CREATE TABLE IF NOT EXISTS Plano_Treinamento(
     PT_Personalizado INT PRIMARY KEY,
-    Progresso_Aluno TEXT NOT NULL
+    Progresso_Aluno ENUM('Iniciante','Intermediario','Avancado') NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Instrutores(
