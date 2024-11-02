@@ -188,6 +188,7 @@ CREATE TABLE IF NOT EXISTS Enderecos_Empresas(
 CREATE TABLE IF NOT EXISTS Endereço_Fornecedores(
     ID_Enderecos INT,
     CNPJ_Fornecedores VARCHAR(18),
+    PRIMARY KEY(ID_Enderecos, CNPJ_Fornecedores),
     CONSTRAINT FK_Endereço_Fornecedores FOREIGN KEY(CNPJ_Fornecedores)
     REFERENCES Fornecedores(CNPJ_Fornecedores),
     CONSTRAINT FK_Fornecedores_Enderecos FOREIGN KEY(ID_Enderecos)
@@ -197,6 +198,7 @@ CREATE TABLE IF NOT EXISTS Endereço_Fornecedores(
 CREATE TABLE IF NOT EXISTS Encomendas_Produtos(
     Num_Encomendas INT,
     Cod_Produtos_EMPR INT,
+    PRIMARY KEY(Num_Encomendas, Cod_Produtos_EMPR),
     CONSTRAINT FK_Encomendas_Produtos FOREIGN KEY(Num_Encomendas)
     REFERENCES Encomendas(Num_Encomendas),
     CONSTRAINT FK_Produtos_Encomendas FOREIGN KEY(Cod_Produtos_EMPR)
@@ -206,6 +208,7 @@ CREATE TABLE IF NOT EXISTS Encomendas_Produtos(
 CREATE TABLE IF NOT EXISTS Componentes_Produtos(
     Cod_Componentes INT,
     Cod_Produtos_EMPR INT,
+    PRIMARY KEY(Cod_Componentes, Cod_Produtos_EMPR),
     CONSTRAINT FK_Produtos_Componentes FOREIGN KEY(Cod_Componentes)
     REFERENCES Componentes(Cod_Componentes),
     CONSTRAINT FK_Componentes_Produtos FOREIGN KEY(Cod_Produtos_EMPR)
@@ -215,6 +218,7 @@ CREATE TABLE IF NOT EXISTS Componentes_Produtos(
 CREATE TABLE IF NOT EXISTS Componentes_RE(
     Cod_Componentes INT,
     Cod_RE INT,
+    PRIMARY KEY(Cod_Componentes, Cod_RE),
     CONSTRAINT FK_RE_Componentes FOREIGN KEY(Cod_Componentes)
     REFERENCES Componentes(Cod_Componentes),
     CONSTRAINT FK_Componentes_RE FOREIGN KEY(Cod_RE)
@@ -244,6 +248,7 @@ CREATE TABLE IF NOT EXISTS Empregados_Telefone(
 CREATE TABLE IF NOT EXISTS Maquinas_Produtos(
     Cod_Maquina INT,
     Cod_Produtos_EMPR INT,
+    PRIMARY KEY(Cod_Maquina, Cod_Produtos_EMPR),
     CONSTRAINT FK_Produtos_Maquinas FOREIGN KEY(Cod_Maquina)
     REFERENCES Maquinas(Cod_Maquina),
     CONSTRAINT FK_Maquinas_Produtos FOREIGN KEY(Cod_Produtos_EMPR)
