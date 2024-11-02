@@ -14,7 +14,6 @@ CREATE TABLE IF NOT EXISTS Voos(
     CONSTRAINT Aeronave_FK FOREIGN KEY(Aeronave_Prefixo)
     REFERENCES Aeronaves(aeronave_Prefixo)
 );
-
 CREATE TABLE IF NOT EXISTS Aeronaves(
     aeronave_Prefixo VARCHAR(10) PRIMARY KEY,
     aeronave_Modelo VARCHAR(45) NOT NULL,
@@ -22,7 +21,8 @@ CREATE TABLE IF NOT EXISTS Aeronaves(
     aeronave_capacidade VARCHAR(45) NOT NULL,
     aeronave_Fabricante VARCHAR(45) NOT NULL
 );
-
+ALTER TABLE Aeronaves
+CHANGE COLUMN aeronave_anofabri aeronave_fabriano VARCHAR(50);
 CREATE TABLE IF NOT EXISTS Aeroportos(
     aeroporto_Cod VARCHAR(3) PRIMARY KEY,
     aeroporto_Nome VARCHAR(45) NOT NULL,
@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS Aeroportos(
     aeroporto_Longitude FLOAT NOT NULL,
     aeroporto_Latitude FLOAT NOT NULL
 );
-
+ALTER TABLE Aeroportos
+MODIFY COLUMN aeroporto_Cod VARCHAR(5);
 CREATE TABLE IF NOT EXISTS Reservas(
     FK_Voo INT,
     FK_Pass VARCHAR(11),
@@ -41,6 +42,12 @@ CREATE TABLE IF NOT EXISTS Reservas(
     REFERENCES Passageiros(pass_CPF)
 );
 
+ALTER TABLE Reservas
+ADD COLUMN Assento VARCHAR(2);
+
+ALTER TABLE Reservas
+DROP COLUMN Assento;
+
 CREATE TABLE IF NOT EXISTS Passageiros(
     pass_CPF VARCHAR(11) PRIMARY KEY,
     pass_Nome VARCHAR(45) NOT NULL,
@@ -48,7 +55,14 @@ CREATE TABLE IF NOT EXISTS Passageiros(
     pass_End VARCHAR(100) NOT NULL,
     pass_Email VARCHAR(45) NOT NULL
 );
-
+CREATE TABLE IF NOT EXISTS Passageiros_II(
+    pass_CPF VARCHAR(11) PRIMARY KEY,
+    pass_Nome VARCHAR(45) NOT NULL,
+    pass_Tel VARCHAR(13) NOT NULL,
+    pass_End VARCHAR(100) NOT NULL,
+    pass_Email VARCHAR(45) NOT NULL
+);
+DROP TABLE Passageiros_II;
 CREATE TABLE IF NOT EXISTS Funcionarios(
     func_ID INT PRIMARY KEY,
     func_Funcao VARCHAR(30) NOT NULL,
@@ -56,7 +70,6 @@ CREATE TABLE IF NOT EXISTS Funcionarios(
     func_Data_Nasc DATE NOT NULL,
     func_Tel VARCHAR(13) NOT NULL
 );
-
 CREATE TABLE IF NOT EXISTS Operam_Voo(
     Func_FK INT,
     Voos_FK INT,
