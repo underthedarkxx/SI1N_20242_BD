@@ -24,6 +24,12 @@ CREATE TABLE IF NOT EXISTS Encomendas(
     ID_Forma_Pag INT NOT NULL,
     Quant_Pac INT
 );
+ALTER TABLE Encomendas
+ADD COLUMN data_Random DATE;
+
+ALTER TABLE Encomendas
+DROP COLUMN data_Random;
+
 CREATE TABLE IF NOT EXISTS Enderecos(
     ID_Enderecos INT PRIMARY KEY,
     Num_End INT NOT NULL,
@@ -54,6 +60,9 @@ CREATE TABLE IF NOT EXISTS Empregados(
     REFERENCES Enderecos(ID_Enderecos)
 );
 
+ALTER TABLE Empregados
+MODIFY COLUMN Cargo_Empre VARCHAR(50) NOT NULL;
+
 CREATE TABLE IF NOT EXISTS Telefone(
     cod_Tel INT PRIMARY KEY,
     Tel_Fixo VARCHAR(10),
@@ -70,6 +79,9 @@ CREATE TABLE IF NOT EXISTS Fornecedores(
     CNPJ_Fornecedores VARCHAR(18) PRIMARY KEY,
     P_Contato_Fornecedores VARCHAR(50) NOT NULL
 );
+
+ALTER TABLE Fornecedores
+CHANGE COLUMN CNPJ_Fornecedores Fornecedores_CNPJ VARCHAR(18);
 
 CREATE TABLE IF NOT EXISTS Empresas(
     CNPJ_Empresas VARCHAR(18) PRIMARY KEY,
@@ -144,7 +156,7 @@ CREATE TABLE IF NOT EXISTS Registro_Suprimentos(
     Quantidade_RS INT NOT NULL,
     Data_Necessidade_RS DATE NOT NULL
 );
-
+DROP TABLE Registro_Suprimentos;
 CREATE TABLE IF NOT EXISTS Empregados_Produtos(
     Matricula_Empre_EMPR INT,
     Cod_Produtos_EMPR INT,

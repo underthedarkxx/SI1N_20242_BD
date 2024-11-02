@@ -38,6 +38,11 @@ CREATE TABLE IF NOT EXISTS Produtos(
     Preco FLOAT NOT NULL,
     Categoria VARCHAR(30)
 );
+ALTER TABLE Produtos
+CHANGE COLUMN Categoria Categoria_Produtos VARCHAR(50);
+
+ALTER TABLE Produtos
+CHANGE COLUMN Categoria_Produtos Categoria VARCHAR(30);
 
 CREATE TABLE IF NOT EXISTS Fornecedores(
     Cod_Fornecedores VARCHAR(30) PRIMARY KEY,
@@ -47,6 +52,13 @@ CREATE TABLE IF NOT EXISTS Fornecedores(
     CONSTRAINT FK_Prod_Forn FOREIGN KEY (Cod_Prod)
     REFERENCES Produtos(Cod_Prod)
 );
+
+ALTER TABLE Fornecedores
+ADD COLUMN Data_Fornecedores DATE;
+
+
+ALTER TABLE Fornecedores
+DROP COLUMN Data_Fornecedores;
 
 CREATE TABLE IF NOT EXISTS Enderecos(
     ID_Enderecos INT PRIMARY KEY,
@@ -72,6 +84,11 @@ CREATE TABLE IF NOT EXISTS Clientes_Produtos(
     CONSTRAINT FK_Produtos_Clientes FOREIGN KEY (Cod_Prod)
     REFERENCES Produtos(Cod_Prod)
 );
+ALTER TABLE Clientes_Produtos
+MODIFY COLUMN Cod_Prod VARCHAR(100);
+
+ALTER TABLE Clientes_Produtos
+MODIFY COLUMN Cod_Prod VARCHAR(30);
 
 CREATE TABLE IF NOT EXISTS Vendas_Produtos(
     Cod_Venda VARCHAR(50),
@@ -82,3 +99,5 @@ CREATE TABLE IF NOT EXISTS Vendas_Produtos(
     CONSTRAINT FK_Produtos_Vendas FOREIGN KEY (Cod_Prod)
     REFERENCES Produtos(Cod_Prod)
 );
+
+DROP TABLE Vendas_Produtos;

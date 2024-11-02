@@ -23,6 +23,13 @@ CREATE TABLE IF NOT EXISTS Pagamentos(
     Status_Pagamento ENUM('PENDENTE','CONCLUÍDO','EM ESPERA')
 );
 
+ALTER TABLE Pagamentos
+ADD COLUMN Descri_Pagamento TEXT;
+
+
+ALTER TABLE Pagamentos
+DROP COLUMN Descri_Pagamento;
+
 CREATE TABLE IF NOT EXISTS Plano_Treinamento(
     PT_Personalizado INT PRIMARY KEY,
     Progresso_Aluno ENUM('Iniciante','Intermediario','Avancado') NOT NULL
@@ -44,11 +51,22 @@ CREATE TABLE IF NOT EXISTS Aulas(
     Capacidade INT NOT NULL
 );
 
+ALTER TABLE Aulas
+MODIFY COLUMN Capacidade VARCHAR(100);
+
+ALTER TABLE Aulas
+MODIFY COLUMN Capacidade INT NOT NULL;
+
 CREATE TABLE IF NOT EXISTS Modalidades(
     Modalidade_Codigo VARCHAR(30) PRIMARY KEY,
     Alunos_Matriculados INT NOT NULL
 );
 
+ALTER TABLE Modalidades
+CHANGE COLUMN Modalidade_Codigo Codigo_Modalidade VARCHAR(50);
+
+ALTER TABLE Modalidades
+CHANGE COLUMN Codigo_Modalidade Modalidade_Codigo VARCHAR(50);
 CREATE TABLE IF NOT EXISTS Enderecos(
     ID_Enderecos INT PRIMARY KEY,
     Num_End INT NOT NULL,
@@ -71,8 +89,10 @@ CREATE TABLE IF NOT EXISTS Alunos_Modalidade(
     CONSTRAINT FK_Alunos_Modalidades FOREIGN KEY(Matricula)
     REFERENCES Alunos(Matricula),
     CONSTRAINT FK_Modalidades_Alunos FOREIGN KEY(Modalidade_Codigo)
-    REFERENCES Modalidade(Modalidade_Codigo)
+    REFERENCES Modalidades(Modalidade_Codigo)
 );
+
+DROP TABLE Modalidades;
 
 CREATE TABLE IF NOT EXISTS Aluno_Aula(
     Matricula INT,
