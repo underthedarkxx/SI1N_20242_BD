@@ -1,4 +1,4 @@
-### Instruções para Submissão dos Exercícios de Banco de Dados
+# Instruções para Submissão dos Exercícios de Banco de Dados
 
 #### Passo 1: Faça o Fork do Repositório
 1. Acesse o repositório oficial da disciplina no GitHub através do seguinte link: [Repositório Oficial](https://github.com/gnrochabr/SI1N_20242_BD/).
@@ -6,15 +6,15 @@
 
 #### Passo 2: Organize os Estudos de Caso
 Para cada um dos quatro estudos de caso fornecidos, siga estas instruções:
-- Crie uma **pasta separada** para cada estudo de caso dentro do seu repositório.
+- Crie uma **pasta separada** para cada atividade dentro do seu repositório.
 - Os estudos de caso estão disponíveis no link: [Estudos de Caso](https://github.com/gnrochabr/Banco_Dados/tree/main/2024_2/Estudos%20de%20Caso).
-- Dentro de cada pasta de estudo de caso, organize seu código em subpastas específicas, uma para cada tipo de linguagem SQL que você irá utilizar:
+- Para cada atividade, organize seu código em subpastas específicas, uma para cada tipo de linguagem SQL que você irá utilizar:
   - **DDL (Data Definition Language)**: Scripts de criação, alteração ou exclusão de tabelas, índices e outras estruturas de dados.
   - **DML (Data Manipulation Language)**: Scripts de inserção, atualização e exclusão de dados nas tabelas.
   - **DQL (Data Query Language)**: Consultas para recuperar informações do banco de dados.
 
 #### Estrutura de Exemplo:
-Dentro da pasta do estudo de caso, crie as subpastas e arquivos conforme o exemplo abaixo:
+Dentro da pasta de cada atividade, crie as subpastas e arquivos conforme o exemplo abaixo:
 
 ```
 PORTFOLIO/
