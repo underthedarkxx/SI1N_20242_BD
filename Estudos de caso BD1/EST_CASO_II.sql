@@ -14,6 +14,15 @@ CREATE TABLE IF NOT EXISTS Voos(
     CONSTRAINT Aeronave_FK FOREIGN KEY(Aeronave_Prefixo)
     REFERENCES Aeronaves(aeronave_Prefixo)
 );
+
+INSERT into Voos(Voo_Codigo, data_Hora_Origem, data_Hora_Destino, aeroporto_Origem, aeroporto_Destino, aeronave_Prefixo)
+VALUES
+(100, ),
+(),
+(),
+(),
+();
+
 CREATE TABLE IF NOT EXISTS Aeronaves(
     aeronave_Prefixo VARCHAR(10) PRIMARY KEY,
     aeronave_Modelo VARCHAR(45) NOT NULL,
