@@ -30,6 +30,9 @@ CHANGE COLUMN Modalidades_Aluno Modalidades_Interesse VARCHAR(30) NOT NULL;
 ALTER TABLE Alunos
 MODIFY COLUMN Data_Nasc_Aluno DATETIME NOT NULL;
 
+ALTER TABLE Alunos
+DROP COLUMN Metodo_Pagamento;
+
 INSERT INTO Alunos (Matricula, Data_Nasc_Aluno, Modalidades_Interesse, CPF, PT_Personalizado, Cod_Pagamento, Email_Aluno)
 VALUES
 (1001, '1992-07-15', 'Futebol, Natação', '12345678901', 1, 'PGT001', 'joao.silva@example.com'),
