@@ -1,6 +1,8 @@
 -- Active: 1728688414725@@127.0.0.1@3306@est_caso_iii
 #CREATE SCHEMA Est_Caso_III;
 Use Est_Caso_III;
+
+DROP TABLE IF EXISTS Clientes;
 CREATE TABLE IF NOT EXISTS Clientes (
     cod_Cliente INT PRIMARY KEY,
     CNPJ_Clientes VARCHAR(18) NOT NULL,
@@ -14,7 +16,22 @@ CREATE TABLE IF NOT EXISTS Clientes (
     CONSTRAINT FK_End_Cli FOREIGN KEY(Id_Enderecos)
     REFERENCES Enderecos(ID_Enderecos)
 );
+ALTER TABLE Clientes
+ADD COLUMN Email_Clientes VARCHAR(100) NOT NULL;
 
+ALTER TABLE Clientes
+CHANGE COLUMN Razao_Social Nome_Razao_Social VARCHAR(50) NOT NULL;
+
+ALTER TABLE Clientes
+CHANGE COLUMN  Nome_Razao_Social Razao_Social VARCHAR(100) NOT NULL;
+
+ALTER TABLE Clientes
+DROP COLUMN Num_Encomenda;
+
+ALTER TABLE Clientes
+MODIFY COLUMN CNPJ_Clientes VARCHAR(18) NULL;
+
+DROP TABLE IF EXISTS Encomendas;
 CREATE TABLE IF NOT EXISTS Encomendas(
     Num_Encomendas INT PRIMARY KEY,
     Data_Inclusao_Enc DATE NOT NULL,
